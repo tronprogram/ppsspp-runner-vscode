@@ -4,6 +4,10 @@
   "description": "Run your PSP homebrew in PPSSPP from VS Code.",
   "version": "0.0.1",
   "publisher": "tronprogram",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tronprogram/ppsspp-runner-vscode.git"
+  },
   "engines": {
     "vscode": "^1.80.0"
   },
