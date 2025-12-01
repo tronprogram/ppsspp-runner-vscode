@@ -1,0 +1,85 @@
+{
+  "name": "ppsspp-runner",
+  "displayName": "PPSSPP Runner",
+  "description": "Run your PSP homebrew in PPSSPP from VS Code.",
+  "version": "0.0.1",
+  "publisher": "tronprogram",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "main": "./out/extension.js",
+  "activationEvents": [
+    "onCommand:ppssppRunner.run",
+    "onCommand:ppssppRunner.stop"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "ppssppRunner.run",
+        "title": "Run EBOOT.PBP in PPSSPP",
+        "icon": "$(play)"
+      },
+      {
+        "command": "ppssppRunner.stop",
+        "title": "Stop PPSSPP",
+        "icon": "$(debug-stop)"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "ppssppRunner.run",
+        "key": "ctrl+shift+r",
+        "when": "editorTextFocus"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "ppssppRunner.run",
+          "group": "navigation",
+          "when": "resourceExtname == .lua && !ppssppRunner.running"
+        },
+        {
+          "command": "ppssppRunner.stop",
+          "group": "navigation",
+          "when": "resourceExtname == .lua && ppssppRunner.running"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "ppssppRunner.run"
+        },
+        {
+          "command": "ppssppRunner.stop"
+        }
+      ]
+    },
+    "configuration": {
+      "type": "object",
+      "title": "PPSSPP Runner",
+      "properties": {
+        "ppssppRunner.ppssppPath": {
+          "type": "string",
+          "default": "",
+          "description": "Path to PPSSPP executable. If its empty, the extension will prompt you to locate it when you run the command."
+        },
+        "ppssppRunner.ebootPath": {
+          "type": "string",
+          "default": "",
+          "description": "Path to EBOOT.PBP. If empty, uses ${workspaceFolder}/EBOOT.PBP."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "test": "echo \"no tests\""
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "@types/vscode": "^1.80.0",
+    "typescript": "^5.0.0"
+  }
+}
