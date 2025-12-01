@@ -2,8 +2,9 @@
   "name": "ppsspp-runner",
   "displayName": "PPSSPP Runner",
   "description": "Run your PSP homebrew in PPSSPP from VS Code.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "tronprogram",
+  "icon": "images/icon.png",
   "repository": {
     "type": "git",
     "url": "https://github.com/tronprogram/ppsspp-runner-vscode.git"
